@@ -22,9 +22,15 @@ export const NAV_SECTIONS: { id: SectionId; label: string }[] = [
   { id: "experience", label: "Experience" },
 ];
 
+// Vite's `base` (e.g. "/sable-acoustics/" on GitHub Pages, "/" locally) has
+// to be prepended by hand for anything referenced as a plain string rather
+// than through an import — files under public/ are served as-is and Vite
+// does not rewrite string literals like "/video/x.mp4" at build time.
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export const HERO_FILM: VideoSpec = {
-  src: "/video/hero-film.mp4",
-  poster: "/images/hero-poster.jpg",
+  src: asset("video/hero-film.mp4"),
+  poster: asset("images/hero-poster.jpg"),
   spec:
     "HERO FILM — 1920×1080, 16:9, 24fps+, 무음, 우퍼 보이스코일 클로즈업 → 크로스오버 → 인클로저 → SABLE ONE 전체 공개, 컷 없는 연속 촬영, 약 8초 소스를 스크롤 0–100%에 매핑",
   width: 1920,
@@ -32,8 +38,8 @@ export const HERO_FILM: VideoSpec = {
 };
 
 export const FORM_FILM: VideoSpec = {
-  src: "/video/the-form.mp4",
-  poster: "/images/the-form-poster.jpg",
+  src: asset("video/the-form.mp4"),
+  poster: asset("images/the-form-poster.jpg"),
   spec:
     "THE FORM — 1920×1080, 16:9, 24fps+, 무음, 약 8초, 무향실 배경에서 SABLE ONE 측면 실루엣을 따라 흐르는 음파 시각화, 절제된 기술 시각화 톤",
   width: 1920,
@@ -41,8 +47,8 @@ export const FORM_FILM: VideoSpec = {
 };
 
 export const SOURCE_FILM: VideoSpec = {
-  src: "/video/the-source.mp4",
-  poster: "/images/the-source-poster.jpg",
+  src: asset("video/the-source.mp4"),
+  poster: asset("images/the-source-poster.jpg"),
   spec:
     "THE SOURCE — 1920×1080, 16:9, 24fps+, 무음, 약 8초, SABLE TT-1 톤암·플래터·카트리지 매크로 클로즈업, 톤암이 레코드에 내려앉는 순간으로 마무리",
   width: 1920,
@@ -51,9 +57,9 @@ export const SOURCE_FILM: VideoSpec = {
 
 /** Three representative stills used by the prefers-reduced-motion fallback. */
 export const REDUCED_MOTION_STILLS: { src: string; alt: string }[] = [
-  { src: "/images/still-driver.jpg", alt: "보이스코일과 마그넷 갭 클로즈업" },
-  { src: "/images/still-enclosure.jpg", alt: "인클로저 내부 구조" },
-  { src: "/images/still-full.jpg", alt: "SABLE ONE 전체 외관" },
+  { src: asset("images/still-driver.jpg"), alt: "보이스코일과 마그넷 갭 클로즈업" },
+  { src: asset("images/still-enclosure.jpg"), alt: "인클로저 내부 구조" },
+  { src: asset("images/still-full.jpg"), alt: "SABLE ONE 전체 외관" },
 ];
 
 export const HERO_COPY = {
